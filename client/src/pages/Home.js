@@ -1,54 +1,3 @@
-/*import React, {useContext} from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { Grid,Transition  } from 'semantic-ui-react';
-import gql from 'graphql-tag';
-import PostCard from '../components/PostCard';
-import { AuthContext } from '../context/auth';
-function Home() {
-    const { user } = useContext(AuthContext);
-    const {loading,data:{getPosts:posts}={}}=useQuery(FETCH_POSTS_QUERY);
-   //const { loading, data: { posts } = {} } = useQuery(FETCH_POSTS_QUERY);
-   
-   
-    return(
-        <Grid columns={3}>
-            <Grid.Row>
-                <h1>Recent Posts</h1>
-            </Grid.Row>
-    <Grid.Row>
-      {loading ? (
-          <h1>loading Posts..</h1>
-      ):(
-          posts && posts.map(post =>(
-              <Grid.Column key={post.id} style={{marginBottom: 20}}>
-                  <PostCard post={post}/>
-              </Grid.Column>
-          ))
-      )}
-      
-    </Grid.Row>
-    </Grid>
-    );
-}
-const FETCH_POSTS_QUERY = gql`
-{
-        getPosts{
-    id body createdAt username likeCount
-    likes{
-        username
-    }
-    commentCount
-    comments{
-        id username createdAt body
-    }
-}
-    }
-`;
-
-    
-
-export default Home;*/
-
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid, Transition } from 'semantic-ui-react';
@@ -57,7 +6,7 @@ import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
 import PostForm from '../components/PostForm';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
-
+import logo from './logo.jpg';
 function Home() {
   const { user } = useContext(AuthContext);
   const {
@@ -65,10 +14,10 @@ function Home() {
   } = useQuery(FETCH_POSTS_QUERY);
 
   return (
-    <Grid columns={3}>
+    <Grid columns={2} style={{ color:'black'}}>
       <Grid.Row className="page-title">
         <h1>Recent Posts</h1>
-        
+        <img src={logo} style={{ position:'absolute',top:'10px',height:'50px',left:'350px'}}/>
       </Grid.Row>
       <Grid.Row>
         {user && (
